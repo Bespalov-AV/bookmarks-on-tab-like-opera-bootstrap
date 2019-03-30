@@ -2,16 +2,14 @@
   <div>
       <p> First Cpmponent</p>
     <b-card
-      title="Card Title"
-      img-src="https://picsum.photos/600/300/?image=25"
-      img-alt="Image"
-      img-top
-      tag="article"
-      style="max-width: 20rem;"
+      title = ''
+            style="max-width: 20rem;"
       class="mb-2"
     >
+
       <b-card-text>
-        Some quick example text to build on the card title and make up the bulk of the card's content.
+        {{bk.title}}
+        {{massage}}
       </b-card-text>
 
       <b-button href="#" variant="primary">Go somewhere</b-button>
@@ -24,11 +22,17 @@
 import BkItem from './BkItem.vue'
 
   export default {
+    props:  ['bk', 'massage'],
     components: {
     BkItem
   }, 
     data: () => ({
-    })
+    }),
+    beforeMount: function () {
+  
+      console.log(this.$props)
+  
+}
   }
 </script>
 
