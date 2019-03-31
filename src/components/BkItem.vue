@@ -2,9 +2,9 @@
 
   <div v-show="!hidden"
     class="bk-item"
+    v-on:click="actionClickBk(currentBk.url, $event)"
   >
-    {{ currentBk.index }}
-    {{ currentBk.title }}
+    {{ getTitleShort(currentBk.url) }}
 
 </div>
 
@@ -19,6 +19,19 @@
     data: () => ({
 
     }),
+    methods: {
+      getTitleShort(url) {
+        //const text = url.match(/:\/\/.*\.\w{1,3}\//)[0].slice(3,-1)
+        const start = url.search(/:\/\//)+3
+        const temp = url.substring(start)
+        const end = temp.search(/\./)
+        return temp.substring(0, end)
+      },
+      actionClickBk(url, event) {
+          event.preventDefault();
+          window.open(url).focus();
+      }      
+    },
     beforeMount: function () {
     //console.log(this.$props)
       //console.log(this.currentBk)

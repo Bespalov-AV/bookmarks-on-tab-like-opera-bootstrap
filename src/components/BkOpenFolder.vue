@@ -1,0 +1,77 @@
+<template>
+<div
+  v-if="openFolder"
+  v-on:click="setCloseFolder"
+  >
+    <div class="title">
+      {{ title }}
+    </div>
+  <div 
+    class="bk-open-folder"
+    
+  >
+    <div v-for="currentBk of bkFolder"
+        :key="currentBk.id"
+        >
+        <BkFolder v-if="currentBk.children"
+          :bkFolder = currentBk.children
+          :title = currentBk.title 
+        >
+        </BkFolder>
+
+        <BkItem v-else
+          :currentBk = currentBk
+        >
+        </BkItem> 
+    </div>
+  </div>
+</div>
+</template>
+
+<script>
+import BkItem from './BkItem.vue'
+import BkFolder from './BkFolder.vue'
+
+  export default {
+    props:  ['bkFolder', 'title'],
+    components: {BkItem, BkFolder}, 
+    data: () => ({
+        openFolder: true
+    }),
+    methods: {
+      log(param) {
+        console.log(param)
+      },
+      setCloseFolder() {
+          this.openFolder = !this.openFolder
+      }
+    },
+    computed: {
+
+    },
+    beforeMount: function () {
+    // //console.log(this.$props)
+     console.log('currentBk')
+    //   console.log(this.currentBk)
+    }
+  }
+</script>
+
+<style>
+.bk-open-folder {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    /* height: var(--heght-bk); */
+    flex-direction: row;
+    /* border: 1px solid brown; */
+    /* background: #EEEDFA; */
+    border-radius: 5px;
+    z-index: 100;
+}
+.title {
+    display: block;
+    cursor: pointer;
+}
+</style>

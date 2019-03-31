@@ -1,10 +1,18 @@
 <template>
 <div>
 
-  <div
+  <BkOpenFolder 
+    v-if="openFolder"
+    v-on:click="setOpenFolder"
+    :bkFolder = bkFolder
+  />
+
+  <div v-else
+    v-on:click="setOpenFolder"
     class="bk-folder">
     {{ title }}
   </div>
+
 
   <!-- <BkItem v-else
     :currentBk = currentBk
@@ -17,13 +25,20 @@
 
 <script>
 import BkItem from './BkItem.vue'
+import BkOpenFolder from './BkOpenFolder.vue'
 
   export default {
     props:  ['bkFolder', 'title'],
-    components: {BkItem}, 
+    components: {BkItem, BkOpenFolder}, 
 
     data: () => ({
-    })
+      openFolder: false
+    }),
+    methods: {
+      setOpenFolder() {
+        this.openFolder= !this.openFolder
+      }
+    }
   }
 </script>
 
