@@ -1,32 +1,25 @@
 <template>
-  <div>
-    <b-card
-      title = ''
-      style="width: 200px; height: 200px;"
-      class="m-1"
-    >
-      <div
-        v-for = "bkItem of currentBk.children"
-        :key = bkItem.id
-        :currentBk = bkItem
-      >      
-        <BkFolder v-if="bkItem.children"
-        :currentBk = bkItem.children
+<div>
+    <div class="title">
+      {{ title }}
+    </div>
+  <div class="bk-contener">
+    <div v-for="currentBk of bkFolder"
+        :key="currentBk.id"
+        >
+        <BkFolder v-if="currentBk.children"
+          :bkFolder = currentBk.children
+          :title = currentBk.title 
         >
         </BkFolder>
 
-        <BkItem v-if="!bkItem.children"
-        :currentBk = bkItem
+        <BkItem v-else
+          :currentBk = currentBk
         >
         </BkItem> 
-
-      </div>
-      <b-card-text>
-        {{currentBk.title}}
-      </b-card-text>
-
-    </b-card>
+    </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -34,19 +27,42 @@ import BkItem from './BkItem.vue'
 import BkFolder from './BkFolder.vue'
 
   export default {
-    props:  ['currentBk'],
+    props:  ['bkFolder', 'title'],
     components: {BkItem, BkFolder}, 
     data: () => ({
+
     }),
+    methods: {
+      log(param) {
+        console.log(param)
+      }
+    },
+    computed: {
+
+    },
     beforeMount: function () {
-    //console.log(this.$props)
-      console.log(this.currentBk)
+    // //console.log(this.$props)
+     console.log('currentBk')
+    //   console.log(this.currentBk)
     }
   }
 </script>
 
 <style>
-.BkItem {
-  margin-bottom: 20px;
+.bk-contener {
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 1px solid #333; */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 200px;
+    height: 128px;
+    overflow: hidden;
+}
+.title {
+    display: block;
+    cursor: pointer;
 }
 </style>
