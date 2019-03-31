@@ -1,10 +1,12 @@
 {
-    "name": "NMGWorker",
+    "name": "bookmarks-on-tab-like-opera",
     "version": "1.0",
     "description": "NMG Chrome-Extension Blank Template",
     "permissions": [
       "declarativeContent", 
-      "storage"
+      "storage",
+      "activeTab",
+      "bookmarks"      
     ],
     "background": {
       "scripts": ["background.js"],
