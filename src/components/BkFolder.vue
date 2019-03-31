@@ -1,19 +1,18 @@
 <template>
 <div>
 
-  <BkOpenFolder 
-    v-if="openFolder"
-    v-on:click="setOpenFolder"
-    :bkFolder = bkFolder
-  />
-
-  <div v-else
+  <div 
     v-on:click="setOpenFolder"
     class="bk-folder">
     {{ title }}
   </div>
 
-
+  <BkOpenFolder 
+    v-if="openFolder"
+    v-on:click="setOpenFolder"
+    :bkFolder = bkFolder
+  />
+  
   <!-- <BkItem v-else
     :currentBk = currentBk
     :hidden = true
@@ -36,7 +35,8 @@ import BkOpenFolder from './BkOpenFolder.vue'
     }),
     methods: {
       setOpenFolder() {
-        this.openFolder= !this.openFolder
+        this.openFolder = !this.openFolder
+        vm.$parent.title = 'qqqqqqqq'
       }
     }
   }

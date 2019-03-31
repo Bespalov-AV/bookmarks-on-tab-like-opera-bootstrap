@@ -39,7 +39,7 @@ export default {
     display: flex;
     justify-content: center;
     justify-items: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 .contener {
     display: flex;
@@ -48,6 +48,6 @@ export default {
     flex-wrap: wrap;
     width: 1400px;
     min-height: 800px;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 </style>
