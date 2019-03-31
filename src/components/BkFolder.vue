@@ -1,7 +1,5 @@
 <template>
-
-<b-button class="card">{{ currentBk.title }}</b-button>
-
+<b-button variant="outline-primary" class="card">{{ currentBk.title }}</b-button>
 </template>
 
 <script>
@@ -17,7 +15,6 @@
 .card {
   width: 50px; 
   height: 50px;
-
 
 
 }
