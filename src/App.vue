@@ -1,13 +1,10 @@
 <template>
-  <b-container>
-    <p> App vue.js</p>
-    <b-row>
-      <b-col>
+  <b-container class="main-contener">
+    <b-row class="main-row">
         <BkContener 
             v-for = "bkFolder of bookmarks.children"
             :key = bkFolder.id
-            :bk = bkFolder
-            :massage = bkFolder.title
+            :currentBk = bkFolder
         >
          </BkContener>
          <b-card-text 
@@ -17,7 +14,6 @@
 
            {{bkFolder.children}}
          </b-card-text>
-        </b-col>
       </b-row>
     
   </b-container>
@@ -45,6 +41,11 @@ export default {
 <style>
 .main-contaner {
   max-width: 1024px;
+  min-height: 800px;
+  margin-top: 50px;
+}
+.main-row {
+  margin-top: 50px;
 }
 
 </style>

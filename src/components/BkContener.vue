@@ -1,18 +1,15 @@
 <template>
   <div>
-      <p> First Cpmponent</p>
     <b-card
       title = ''
-            style="max-width: 20rem;"
-      class="mb-2"
+      style="width: 200px; height: 200px;"
+      class="m-1"
     >
 
       <b-card-text>
-        {{bk.title}}
-        {{massage}}
+        {{currentBk.title}}
       </b-card-text>
 
-      <b-button href="#" variant="primary">Go somewhere</b-button>
     </b-card>
   </div>
 
@@ -22,7 +19,7 @@
 import BkItem from './BkItem.vue'
 
   export default {
-    props:  ['bk', 'massage'],
+    props:  ['currentBk'],
     components: {
     BkItem
   }, 
