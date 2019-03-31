@@ -57,8 +57,8 @@ import BkFolder from './BkFolder.vue'
     margin-bottom: 5px;
     margin-left: 5px;
     margin-right: 5px;
-    width: 200px;
-    height: 128px;
+    /* width: 200px; */
+    height: 200px;
     overflow: hidden;
 }
 .title {
