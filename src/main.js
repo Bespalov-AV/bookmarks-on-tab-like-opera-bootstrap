@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+import vOutsideEvents from 'vue-outside-events'
+
+Vue.use(vOutsideEvents)
 
 import './assets/style.css'
 

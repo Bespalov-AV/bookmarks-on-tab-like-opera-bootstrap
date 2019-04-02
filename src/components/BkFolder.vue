@@ -11,6 +11,7 @@
     v-if="openFolder"
     v-on:click="setOpenFolder($event)"
     :bkChildren = bkChildren
+    :OpenFolderParent="openFolder"
   />
 
   </div>
@@ -20,7 +21,7 @@
 import BkOpenFolder from './BkOpenFolder.vue'
 
   export default {
-    props:  ['bkChildren', 'title', 'index', 'isOpenFolder'],
+    props:  ['bkChildren', 'title', 'index', 'isOpenFolder', 'OpenFolderParent'],
     components: {BkOpenFolder}, 
 
     data: () => ({
@@ -29,8 +30,16 @@ import BkOpenFolder from './BkOpenFolder.vue'
     methods: {
       setOpenFolder(event) {
         this.openFolder = !this.openFolder
+        //this.openFolder = this.OpenFolderParent
+        this.$emit('setOpenFolderParent')
       }
-    }
+    },
+    watch: {
+      OpenFolderParent(val) {
+          this.openFolder = !this.openFolder
+          console.log('opened')
+      }
+    },
   }
 </script>
 

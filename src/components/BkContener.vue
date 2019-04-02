@@ -6,11 +6,14 @@
   <div class="bk-contener">
     <div v-for="currentBk of bkFolder"
         :key="currentBk.id"
+        
         >
         <BkFolder v-if="currentBk.children"
           :bkChildren = currentBk.children
           :title = currentBk.title 
           :index = currentBk.index 
+          :OpenFolderParent = OpenFolderParent
+          v-on:setOpenFolderParent="setOpenFolderParent"
         >
         </BkFolder>
 
@@ -31,20 +34,22 @@ import BkFolder from './BkFolder.vue'
     props:  ['bkFolder', 'title'],
     components: {BkItem, BkFolder}, 
     data: () => ({
-
+      OpenFolderParent: false
     }),
     methods: {
       log(param) {
         console.log(param)
+      },
+      setOpenFolderParent() {
+        console.log('setOpenFolderParent!!')
+        this.OpenFolderParent = !this.OpenFolderParent
       }
     },
     computed: {
 
     },
-    beforeMount: function () {
-    // //console.log(this.$props)
-     console.log('currentBk')
-    //   console.log(this.currentBk)
+    updated() {
+      console.log(this.OpenFolderParent)
     }
   }
 </script>

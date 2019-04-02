@@ -53,7 +53,7 @@ import BkFolder from './BkFolder.vue'
     },
     beforeMount: function () {
     // //console.log(this.$props)
-     console.log('currentBk')
+     //console.log('currentBk')
     //   console.log(this.currentBk)
     }
   }

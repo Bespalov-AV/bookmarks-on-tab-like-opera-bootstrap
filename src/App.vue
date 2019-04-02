@@ -31,37 +31,42 @@ export default {
       console.log(param)
     },
     getBookmarks() {
+      const bk = import('./bookmarks.js')
+      bk.then( (res) => {
+        this.bookmarks = res.bk.children
+      })
+      
+      return
 
-            const bk = import('./bookmarks.js')
-            bk.then( (res) => {
-              this.bookmarks = res.bk.children
-            })
-            
-            return
+      if (false) {
+          chrome.bookmarks.getSubTree(startNode, (startTreeNodes) => {
 
-            if (false) {
-                chrome.bookmarks.getSubTree(startNode, (startTreeNodes) => {
-
-                })
-            } 
-            else {
-                chrome.bookmarks.getTree((bookmarkTree) => {
-                    console.log('bookmarks tree -> ' + bookmarkTree);
-                    console.log(bookmarkTree);
-                    this.bookmarks = bookmarkTree[0].children[0]
-                    //bkContener.textContent= JSON.stringify(startTreeNodes[0].children[0].children[0])                
-                })
-            }
-    }
+          })
+      } 
+      else {
+          chrome.bookmarks.getTree((bookmarkTree) => {
+              console.log('bookmarks tree -> ' + bookmarkTree);
+              console.log(bookmarkTree);
+              this.bookmarks = bookmarkTree[0].children[0]
+              //bkContener.textContent= JSON.stringify(startTreeNodes[0].children[0].children[0])                
+          })
+      }
+    },
+    onClickOutside (e, el) {
+        console.log('onClickOutside');
+        console.log('click heard outside element: ', el);
+        console.log('element clicked: '. e.target);
+        console.log('event: ', e);
+      }
 
   },
  created() {
     this.getBookmarks()
-    console.log('created')
-    console.log(this.bookmarks)
+    // console.log('created')
+    // console.log(this.bookmarks)
  },
  updated() {
-    console.log('updated')
+    //console.log('updated')
     //console.log(this.bookmarks)
  }
 
