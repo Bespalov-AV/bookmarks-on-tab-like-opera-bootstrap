@@ -4,7 +4,7 @@
         <BkContener
             v-for="bkFolder of bookmarks" 
             :key = bkFolder.id
-            :bkFolder = bkFolder
+            :bkFolder = bkFolder.children
             :title = bkFolder.title
         >
         </BkContener>
@@ -34,7 +34,7 @@ export default {
 
             const bk = import('./bookmarks.js')
             bk.then( (res) => {
-              this.bookmarks = res.bk
+              this.bookmarks = res.bk.children
             })
             
             return
@@ -56,14 +56,13 @@ export default {
 
   },
  created() {
-   this.getBookmarks()
-      console.log('created')
-   console.log(this.bookmarks)
+    this.getBookmarks()
+    console.log('created')
+    console.log(this.bookmarks)
  },
  updated() {
-      console.log('updated')
-   console.log(this.bookmarks)
-
+    console.log('updated')
+  //  console.log(this.bookmarks)
  }
 
 }

@@ -7,13 +7,13 @@
     <div v-for="currentBk of bkFolder"
         :key="currentBk.id"
         >
-        <BkFolder v-if="currentBk.children"
+        <BkFolder v-if="currentBk.children && currentBk.index < 4"
           :bkFolder = currentBk.children
           :title = currentBk.title 
         >
         </BkFolder>
 
-        <BkItem v-else
+        <BkItem v-else-if="currentBk.index < 4"
           :currentBk = currentBk
         >
         </BkItem> 
@@ -57,8 +57,8 @@ import BkFolder from './BkFolder.vue'
     margin-bottom: 5px;
     margin-left: 5px;
     margin-right: 5px;
-    /* width: 200px; */
-    height: 200px;
+    width: 200px;
+    height: 140;
     overflow: hidden;
 }
 .title {
