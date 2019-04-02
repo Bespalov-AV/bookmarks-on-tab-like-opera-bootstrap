@@ -10,7 +10,7 @@
     class="bk-open-folder"
     
   >
-    <div v-for="currentBk of bkFolder"
+    <div v-for="currentBk of bkChildren"
         :key="currentBk.id"
         >
         <BkFolder v-if="currentBk.children"
@@ -33,7 +33,7 @@ import BkItem from './BkItem.vue'
 import BkFolder from './BkFolder.vue'
 
   export default {
-    props:  ['bkFolder', 'title'],
+    props:  ['bkChildren', 'title'],
     components: {BkItem, BkFolder}, 
     data: () => ({
         openFolder: true

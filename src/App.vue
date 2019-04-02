@@ -62,7 +62,7 @@ export default {
  },
  updated() {
     console.log('updated')
-  //  console.log(this.bookmarks)
+    console.log(this.bookmarks)
  }
 
 }

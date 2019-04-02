@@ -7,13 +7,14 @@
     <div v-for="currentBk of bkFolder"
         :key="currentBk.id"
         >
-        <BkFolder v-if="currentBk.children && currentBk.index < 4"
-          :bkFolder = currentBk.children
+        <BkFolder v-if="currentBk.children"
+          :bkChildren = currentBk.children
           :title = currentBk.title 
+          :index = currentBk.index 
         >
         </BkFolder>
 
-        <BkItem v-else-if="currentBk.index < 4"
+        <BkItem v-else
           :currentBk = currentBk
         >
         </BkItem> 

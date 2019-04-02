@@ -1,6 +1,6 @@
 <template>
 
-  <div v-show="!hidden"
+  <div v-show="!hidden" v-if="currentBk.index < 4"
     class="bk-item"
     v-on:click="actionClickBk(currentBk.url, $event)"
   >

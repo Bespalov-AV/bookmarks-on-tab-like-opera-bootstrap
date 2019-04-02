@@ -1,7 +1,7 @@
 <template>
 <div>
 
-  <div 
+  <div v-if="index < 4"
     v-on:click="setOpenFolder"
     class="bk-folder">
     {{ title }}
@@ -9,34 +9,26 @@
 
   <BkOpenFolder 
     v-if="openFolder"
-    v-on:click="setOpenFolder"
-    :bkFolder = bkFolder
+    v-on:click="setOpenFolder($event)"
+    :bkChildren = bkChildren
   />
-  
-  <!-- <BkItem v-else
-    :currentBk = currentBk
-    :hidden = true
-  >
-  </BkItem>  -->
 
   </div>
 </template>
 
 <script>
-import BkItem from './BkItem.vue'
 import BkOpenFolder from './BkOpenFolder.vue'
 
   export default {
-    props:  ['bkFolder', 'title'],
-    components: {BkItem, BkOpenFolder}, 
+    props:  ['bkChildren', 'title', 'index'],
+    components: {BkOpenFolder}, 
 
     data: () => ({
       openFolder: false
     }),
     methods: {
-      setOpenFolder() {
+      setOpenFolder(event) {
         this.openFolder = !this.openFolder
-        vm.$parent.title = 'qqqqqqqq'
       }
     }
   }
