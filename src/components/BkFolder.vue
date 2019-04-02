@@ -1,7 +1,7 @@
 <template>
 <div>
 
-  <div v-if="index < 4"
+  <div v-if="index < 4 || isOpenFolder"
     v-on:click="setOpenFolder"
     class="bk-folder">
     {{ title }}
@@ -20,7 +20,7 @@
 import BkOpenFolder from './BkOpenFolder.vue'
 
   export default {
-    props:  ['bkChildren', 'title', 'index'],
+    props:  ['bkChildren', 'title', 'index', 'isOpenFolder'],
     components: {BkOpenFolder}, 
 
     data: () => ({

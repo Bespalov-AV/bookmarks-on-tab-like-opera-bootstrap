@@ -16,11 +16,13 @@
         <BkFolder v-if="currentBk.children"
           :bkFolder = currentBk.children
           :title = currentBk.title 
+          :isOpenFolder = true
         >
         </BkFolder>
 
         <BkItem v-else
           :currentBk = currentBk
+          :isOpenFolder = true
         >
         </BkItem> 
     </div>
