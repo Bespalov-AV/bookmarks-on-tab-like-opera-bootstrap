@@ -6,17 +6,15 @@
   <div class="bk-contener">
     <div v-for="currentBk of bkFolder"
         :key="currentBk.id"
-        
         >
         <BkFolder v-if="currentBk.children"
           :bkChildren = currentBk.children
           :title = currentBk.title 
           :index = currentBk.index 
           :OpenFolderParent = OpenFolderParent
-          v-on:setOpenFolderParent="setOpenFolderParent"
+          v-on:setOpenFolderParent = "setOpenFolderParent"          
         >
         </BkFolder>
-
         <BkItem v-else
           :currentBk = currentBk
         >
@@ -41,8 +39,9 @@ import BkFolder from './BkFolder.vue'
         console.log(param)
       },
       setOpenFolderParent() {
-        console.log('setOpenFolderParent!!')
-        this.OpenFolderParent = !this.OpenFolderParent
+        console.log('setOpenFolderParent BKContener')
+        //this.OpenFolderParent = !this.OpenFolderParent
+        this.$emit('setOpenFolderParent')
       }
     },
     computed: {

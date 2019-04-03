@@ -1,6 +1,6 @@
 <template>
 <div
-  v-if="openFolder"
+  v-if="openFolder && !this.$root.closeAll"
   v-on:click="setCloseFolder"
   >
     <div class="title">
