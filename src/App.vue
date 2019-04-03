@@ -1,5 +1,5 @@
 <template>
-  <div v-if="bookmarks" class="flex-contener">
+  <div v-if="bookmarks" class="flex-contener" v-click-outside="onClickOutside">
     <div  class="contener">
         <BkContener
             v-for="bkFolder of bookmarks" 
@@ -57,13 +57,13 @@ export default {
       }
     },
     onClickOutside (e, el) {
-        console.log('onClickOutside');
-        console.log('click heard outside element: ', el);
-        console.log('element clicked: '. e.target);
-        console.log('event: ', e);
+        // console.log('onClickOutside');
+        // console.log('click heard outside element: ', el);
+        // console.log('element clicked: '. e.target);
+        // console.log('event: ', e);
       },
       setOpenFolderParent() {
-        console.log('setOpenFolderParent APP')
+        // console.log('setOpenFolderParent APP')
         this.changedOpenFolderParent = !this.changedOpenFolderParent
       }      
 
@@ -71,8 +71,8 @@ export default {
       watch: {
       changedOpenFolderParent(val) {
           this.OpenFolderParent = !this.OpenFolderParent
-          console.log('changedOpenFolderParent')
-          console.log(this.OpenFolderParent)
+          // console.log('changedOpenFolderParent')
+          // console.log(this.OpenFolderParent)
       }
     },
  created() {

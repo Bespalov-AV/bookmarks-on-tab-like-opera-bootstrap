@@ -48,7 +48,7 @@ import BkFolder from './BkFolder.vue'
 
     },
     updated() {
-      console.log(this.OpenFolderParent)
+      // console.log(this.OpenFolderParent)
     }
   }
 </script>
