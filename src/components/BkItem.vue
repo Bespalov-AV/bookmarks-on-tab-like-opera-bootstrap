@@ -2,6 +2,7 @@
 
   <div v-show="!hidden" v-if="currentBk.index < 4 || isOpenFolder"
     class="bk-item"
+    :style="getClassColor"
     v-on:click="actionClickBk(currentBk.url, $event)"
   >
     {{ getTitleShort(currentBk.url) }}
@@ -35,8 +36,15 @@
       actionClickBk(url, event) {
           event.preventDefault();
           window.open(url).focus();
-      }      
-    },  
+      },   
+    },
+    computed: {
+      getClassColor: () => {
+        const colorInd = Math.round(Math.random()*10)
+        const className= `backgroundColor: var(--bg-color${colorInd})`
+        return className
+      }  
+    }  
   }
 </script>
 
@@ -49,7 +57,7 @@
     height: var(--heght-bk); 
     /* border: 1px solid #216BA3; */
     border-radius: 5px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);    
+    /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);     */
     margin: 2px;
     background: #216BA3;
     overflow: hidden;

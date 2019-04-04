@@ -11,6 +11,7 @@
       v-if="openFolder"
       v-on:click="setOpenFolder($event)"
       :bkChildren = bkFolder
+      :title = title
     />    
   <div class="bk-contener">
     <div v-for="currentBk of bkFolder"

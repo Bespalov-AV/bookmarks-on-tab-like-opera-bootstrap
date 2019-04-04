@@ -14,10 +14,12 @@
     --bg-color10: blue;
 
     --heght-bk: 60px;
+
+    --bg-body: cornflowerblue;
 }
 body {
     font-weight: 400px;
     font-size: 14px;
     font-family: sans-serif, Arial;
-    background: cornflowerblue;
+    background: var(--bg-body);
 }

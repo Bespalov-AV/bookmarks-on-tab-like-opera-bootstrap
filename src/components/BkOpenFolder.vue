@@ -8,7 +8,6 @@
     </div>
   <div 
     class="bk-open-folder"
-    
   >
     <div v-for="currentBk of bkChildren"
         :key="currentBk.id"
@@ -46,6 +45,10 @@ import BkFolder from './BkFolder.vue'
       },
       setCloseFolder() {
           this.openFolder = !this.openFolder
+      },
+      update() {
+        console.log(this.bkChildren);
+        
       }
     },
   }
@@ -59,8 +62,8 @@ import BkFolder from './BkFolder.vue'
     width: 400px;
     /* height: var(--heght-bk); */
     flex-direction: row;
-    /* border: 1px solid brown; */
-    /* background: #EEEDFA; */
+    border: 1px solid #888;
+    background: var(--bg-body);
     border-radius: 5px;
     z-index: 100;
 }
