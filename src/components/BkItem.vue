@@ -36,11 +36,7 @@
           event.preventDefault();
           window.open(url).focus();
       }      
-    },
-    beforeMount: function () {
-    //console.log(this.$props)
-      //console.log(this.currentBk)
-    }    
+    },  
   }
 </script>
 

@@ -56,12 +56,11 @@ export default {
 
   },
  created() {
-    this.getBookmarks()
-    console.log('created')
-    console.log(this.bookmarks)
+    // this.getBookmarks()
+    // console.log(this.bookmarks)
  },
  updated() {
-    console.log('updated')
+    //console.log('updated')
     //console.log(this.bookmarks)
  }
 
