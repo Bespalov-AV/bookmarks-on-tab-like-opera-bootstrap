@@ -1,6 +1,10 @@
 <template>
 <div>
-    <div class="title" v-on:click="setOpenFolder($event)">
+    <div 
+      class="title" 
+      v-on:click="setOpenFolder($event)"
+      v-click-outside="onClickOutside"
+    >
       {{ title }}
     </div>
     <BkOpenFolder 
@@ -46,7 +50,12 @@ import BkOpenFolder from './BkOpenFolder.vue'
       setOpenFolder(event) {
         this.openFolder = !this.openFolder
         console.log(this.openFolder)
-      }
+      },
+      onClickOutside (e, el) {
+        if (e.target != el) {
+          this.openFolder = false
+        }
+      }      
     },
   }
 </script>
