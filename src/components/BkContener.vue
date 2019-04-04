@@ -21,11 +21,13 @@
           :bkChildren = currentBk.children
           :title = currentBk.title 
           :index = currentBk.index 
+          :isOpenFolder = openFolder 
         >
         </BkFolder>
 
         <BkItem v-else
           :currentBk = currentBk
+          :isOpenFolder = openFolder 
         >
         </BkItem> 
     </div>
@@ -38,9 +40,12 @@ import BkItem from './BkItem.vue'
 import BkFolder from './BkFolder.vue'
 import BkOpenFolder from './BkOpenFolder.vue'
 
+ 
+
   export default {
+    name: "BkContener",
     props:  ['bkFolder', 'title'],
-    components: {BkItem, BkFolder, BkOpenFolder}, 
+    components: {BkItem, BkFolder, BkOpenFolder},
     data: () => ({
       openFolder: false
     }),
@@ -58,6 +63,9 @@ import BkOpenFolder from './BkOpenFolder.vue'
         }
       }      
     },
+    beforeCreate: function () {
+  //this.$options.components.TreeFolderContents = require('./tree-folder-contents.vue').default
+}
   }
 </script>
 

@@ -22,19 +22,23 @@
 import BkOpenFolder from './BkOpenFolder.vue'
 
   export default {
+    name: "BkFolder",
     props:  ['bkChildren', 'title', 'index', 'isOpenFolder'],
     components: {BkOpenFolder}, 
 
     data: () => ({
-      openFolder: false
+      openFolder: false,
+      //isThisOpenFolder: false
     }),
     methods: {
       setOpenFolder(event) {
         this.openFolder = !this.openFolder
+        //this.isThisOpenFolder = true
       },
       onClickOutside (e, el) {
         if (e.target != el) {
           this.openFolder = false
+          //this.isThisOpenFolder = false
         }
       }
     }

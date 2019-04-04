@@ -16,6 +16,7 @@
 
 
   export default {
+    name: "BkItem",
     props:  ['currentBk', 'hidden', 'isOpenFolder'],
 
     data: () => ({
