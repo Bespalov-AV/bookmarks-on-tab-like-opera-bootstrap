@@ -1,8 +1,13 @@
 <template>
 <div>
-    <div class="title">
+    <div class="title" v-on:click="setOpenFolder($event)">
       {{ title }}
     </div>
+    <BkOpenFolder 
+      v-if="openFolder"
+      v-on:click="setOpenFolder($event)"
+      :bkChildren = bkFolder
+    />    
   <div class="bk-contener">
     <div v-for="currentBk of bkFolder"
         :key="currentBk.id"
@@ -26,16 +31,21 @@
 <script>
 import BkItem from './BkItem.vue'
 import BkFolder from './BkFolder.vue'
+import BkOpenFolder from './BkOpenFolder.vue'
 
   export default {
     props:  ['bkFolder', 'title'],
-    components: {BkItem, BkFolder}, 
+    components: {BkItem, BkFolder, BkOpenFolder}, 
     data: () => ({
-
+      openFolder: false
     }),
     methods: {
       log(param) {
         console.log(param)
+      },
+      setOpenFolder(event) {
+        this.openFolder = !this.openFolder
+        console.log(this.openFolder)
       }
     },
   }
@@ -57,5 +67,7 @@ import BkFolder from './BkFolder.vue'
 .title {
     display: block;
     cursor: pointer;
+    width: 100%;
+    text-align: center;
 }
 </style>

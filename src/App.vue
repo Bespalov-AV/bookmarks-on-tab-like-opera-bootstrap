@@ -31,32 +31,35 @@ export default {
       console.log(param)
     },
     getBookmarks() {
+      if (chrome && chrome.permissions) {
+        this.getBookmarksFromChrome() }
+      else {
+        this.getBookmarksFromFile()
+      }
+    },
+    getBookmarksFromFile() {
+      const bk = import('./bookmarks.js')
+      bk.then( (res) => {
+        this.bookmarks = res.bk.children
+      })
+   },
+    getBookmarksFromChrome() {
+      chrome.bookmarks.getTree((bookmarkTree) => {
+          console.log('bookmarks tree -> ' + bookmarkTree);
+          console.log(bookmarkTree);
+          this.bookmarks = bookmarkTree[0].children[0].children
+          //bkContener.textContent= JSON.stringify(startTreeNodes[0].children[0].children[0])                
+      })
+    },
+    getBookmarksFromChromeSub() {
+      chrome.bookmarks.getSubTree(startNode, (startTreeNodes) => {
 
-            const bk = import('./bookmarks.js')
-            bk.then( (res) => {
-              this.bookmarks = res.bk.children
-            })
-            
-            return
-
-            if (false) {
-                chrome.bookmarks.getSubTree(startNode, (startTreeNodes) => {
-
-                })
-            } 
-            else {
-                chrome.bookmarks.getTree((bookmarkTree) => {
-                    console.log('bookmarks tree -> ' + bookmarkTree);
-                    console.log(bookmarkTree);
-                    this.bookmarks = bookmarkTree[0].children[0]
-                    //bkContener.textContent= JSON.stringify(startTreeNodes[0].children[0].children[0])                
-                })
-            }
+      })
     }
 
   },
  created() {
-    // this.getBookmarks()
+    this.getBookmarks()
     // console.log(this.bookmarks)
  },
  updated() {
