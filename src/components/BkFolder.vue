@@ -33,10 +33,6 @@ import BkOpenFolder from './BkOpenFolder.vue'
         this.openFolder = !this.openFolder
       },
       onClickOutside (e, el) {
-        // console.log('onClickOutside');
-        console.log('click element: ', el);
-        //  console.log('element clicked: ', this.$el);
-          console.log('event: ', e.target);
         if (e.target != el) {
           this.openFolder = false
         }

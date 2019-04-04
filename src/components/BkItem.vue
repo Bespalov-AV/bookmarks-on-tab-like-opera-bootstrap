@@ -5,6 +5,7 @@
     v-on:click="actionClickBk(currentBk.url, $event)"
   >
     {{ getTitleShort(currentBk.url) }}
+    <!-- {{ currentBk.title }} -->
 
 </div>
 
@@ -22,10 +23,14 @@
     methods: {
       getTitleShort(url) {
         //const text = url.match(/:\/\/.*\.\w{1,3}\//)[0].slice(3,-1)
-        const start = url.search(/:\/\//)+3
-        const temp = url.substring(start)
-        const end = temp.search(/\./)
-        return temp.substring(0, end)
+        url = url.replace(/http:\/\//g,"")
+        url = url.replace(/https:\/\//g,"")
+        url = url.replace(/www./g,"")
+
+        //const start = url.search(/:\/\//)
+        //const temp = url.substring(0)
+        const end = url.search(/\//)
+        return url.substring(0, end)
       },
       actionClickBk(url, event) {
           event.preventDefault();
@@ -54,7 +59,7 @@
     overflow: hidden;
     cursor: pointer;
     color: white;
-    font-size: 15px;
+    font-size: 11px;
     /* vertical-align: middle; */
 }
 </style>
