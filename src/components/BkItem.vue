@@ -1,6 +1,7 @@
 <template>
 
-  <div v-show="!hidden" v-if="currentBk.index < 4 || isOpenFolder"
+  <div 
+    
     class="bk-item"
     :style="getClassColor"
     v-on:click="actionClickBk(currentBk.url, $event)"

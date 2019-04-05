@@ -35,7 +35,7 @@ import BkFolder from './BkFolder.vue'
 
   export default {
     props:  ['bkChildren', 'title'],
-    components: {BkItem, BkFolder}, 
+    components: {BkItem, BkFolder: () => import('./BkOpenFolder.vue')}, 
     data: () => ({
         openFolder: true
     }),

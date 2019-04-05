@@ -2,7 +2,8 @@
 
   <div v-click-outside="onClickOutside">
 
-  <div v-if="index < 4 || isOpenFolder"
+  <div 
+   
     v-on:click="setOpenFolder"
     class="bk-folder">
     {{ title }}
@@ -37,7 +38,14 @@ import BkOpenFolder from './BkOpenFolder.vue'
           this.openFolder = false
         }
       }
-    }
+    },
+    beforeMount() {
+      if (this.isOpenFolder) {
+        this.bkChildren = this.$attr.bkFolder
+        console.log(this.$attr.bkFolder)
+
+      }
+    },
   }
 </script>
 

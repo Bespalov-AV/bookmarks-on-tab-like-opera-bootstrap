@@ -13,9 +13,10 @@
       :bkChildren = bkFolder
       :title = title
     />    
-  <div class="bk-contener">
+  <div class="bk-contener" :class = classFolder>
     <div v-for="currentBk of bkFolder"
         :key="currentBk.id"
+        
         >
         <BkFolder v-if="currentBk.children"
           :bkChildren = currentBk.children
@@ -42,15 +43,17 @@ import BkOpenFolder from './BkOpenFolder.vue'
     props:  ['bkFolder', 'title'],
     components: {BkItem, BkFolder, BkOpenFolder}, 
     data: () => ({
-      openFolder: false
+      openFolder: false,
+      classFolder: ""
     }),
     methods: {
       log(param) {
         console.log(param)
       },
       setOpenFolder(event) {
-        this.openFolder = !this.openFolder
-        console.log(this.openFolder)
+        // this.openFolder = !this.openFolder
+        // console.log(this.openFolder)
+        this.classFolder = (this.classFolder.length > 0) ? "" : "classFolder" 
       },
       onClickOutside (e, el) {
         if (e.target != el) {
@@ -71,7 +74,7 @@ import BkOpenFolder from './BkOpenFolder.vue'
     margin-left: 5px;
     margin-right: 5px;
     width: 200px;
-    height: 140;
+    height: 140px;
     overflow: hidden;
 }
 .title {
@@ -79,5 +82,9 @@ import BkOpenFolder from './BkOpenFolder.vue'
     cursor: pointer;
     width: 100%;
     text-align: center;
+}
+.classFolder {
+  width: 100%;
+  height: 100%;
 }
 </style>
