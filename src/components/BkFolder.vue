@@ -21,15 +21,21 @@ export default {
   }),
   methods: {
     setOpenFolder(event) {
-      this.openFolder = !this.openFolder;
+      this.openFolder = true;
       //this.isThisOpenFolder = true
     },
     onClickOutside(e, el) {
-      // if (e.target != el) {
-      //   this.openFolder = false;
-      //this.isThisOpenFolder = false
-      //}
+      if (e.target != el) {
+        //this.openFolder = false;
+        //this.isThisOpenFolder = false
+      }
     }
+  },
+  beforeUpdate() {
+    console.log(this.openFolder);
+  },
+  mounted() {
+    console.log(this.openFolder);
   }
 };
 </script>

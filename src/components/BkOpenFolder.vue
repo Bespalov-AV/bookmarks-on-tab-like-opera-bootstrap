@@ -34,7 +34,7 @@ export default {
       console.log(param);
     },
     setCloseFolder() {
-      this.openFolder = !this.openFolder;
+      //this.openFolder = !this.openFolder;
     },
     update() {
       console.log(this.bkChildren);
