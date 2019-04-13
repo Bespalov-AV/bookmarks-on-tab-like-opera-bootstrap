@@ -49,11 +49,10 @@
 
 <script>
 import BkItem from "./BkItem.vue";
-import BkFolder from "./BkFolder.vue";
 
 export default {
   props: ["bkChildren", "title"],
-  components: { BkItem, BkFolder },
+  components: { BkItem, BkFolder: () => import("./BkFolder.vue") },
   data: () => ({
     openFolder: true
   }),
