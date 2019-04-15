@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import BkModal from "./BkModal.vue";
+import BkModal from "./BkVModal.vue";
 
 export default {
   props: ["bkChildren", "title", "index", "isOpenFolder"],
@@ -18,7 +18,7 @@ export default {
   }),
   methods: {
     showModal() {
-      this.openFolder = true;
+      this.openFolder = !this.openFolder;
     },
     closeModal() {
       this.openFolder = false;
