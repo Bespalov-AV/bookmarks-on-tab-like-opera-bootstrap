@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div v-if="index < 4 || isOpenFolder" v-on:click="showModal" class="bk-folder">{{ title }}></div>
+    <div
+      v-if="index < 4 || isOpenFolder"
+      v-on:click="showModal"
+      class="bk-folder"
+      v-b-modal.modal-center
+    >{{ title }}></div>
 
     <BkModal v-if="openFolder" :bkChildren="bkChildren" v-on:close="closeModal"/>
   </div>
@@ -18,10 +23,11 @@ export default {
   }),
   methods: {
     showModal() {
-      this.openFolder = true;
+      this.openFolder = !this.openFolder;
     },
     closeModal() {
       this.openFolder = false;
+      console.log(this.openFolder);
     }
   }
 };

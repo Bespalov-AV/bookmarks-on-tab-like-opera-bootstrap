@@ -40,7 +40,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .bk-open-folder {
   position: fixed;
   display: flex;

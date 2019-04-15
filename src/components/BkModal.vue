@@ -1,51 +1,23 @@
 <template>
-  <transition name="modal-fade">
-    <div class="modal-backdrop" role="dialog">
-      <div class="modal" ref="modal">
-        <header class="modal-header">
-          <h2>This is the default tile!!!!</h2>
+  <div>
+    <!-- Modal Component -->
+    <b-modal id="modal-center" centered v-on:hide="hide">
+      <div class="title">{{ title }}</div>
+      <div class="bk-open-folder">
+        <div v-for="currentBk of bkChildren" :key="currentBk.id">
+          <BkFolder
+            v-if="currentBk.children"
+            :bkFolder="currentBk.children"
+            :title="currentBk.title "
+            :isOpenFolder="true"
+          ></BkFolder>
 
-          <button
-            type="button"
-            class="btn-close btn-right"
-            @click="close"
-            aria-label="Close modal"
-          >x</button>
-        </header>
-
-        <section class="modal-body">
-          <div class="title">{{ title }}</div>
-          <div class="bk-open-folder">
-            <div v-for="currentBk of bkChildren" :key="currentBk.id">
-              <BkFolder
-                v-if="currentBk.children"
-                :bkFolder="currentBk.children"
-                :title="currentBk.title "
-                :isOpenFolder="true"
-              ></BkFolder>
-
-              <BkItem v-else :currentBk="currentBk" :isOpenFolder="true"></BkItem>
-            </div>
-          </div>
-        </section>
+          <BkItem v-else :currentBk="currentBk" :isOpenFolder="true"></BkItem>
+        </div>
       </div>
-    </div>
-  </transition>
+    </b-modal>
+  </div>
 </template>        
-        </section>
-
-        <footer class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-green"
-            @click="close"
-            aria-label="Close modal"
-          >Close me!</button>
-        </footer>
-      </div>
-    </div>
-  </transition>
-</template>
 
 <script>
 import BkItem from "./BkItem.vue";
@@ -57,6 +29,10 @@ export default {
     openFolder: true
   }),
   methods: {
+    hide() {
+      this.$emit("close");
+      console.log("hide");
+    },
     log(param) {
       console.log(param);
     },
@@ -73,7 +49,7 @@ export default {
 };
 </script>
 
-<style scope>
+<style scoped>
 .bk-open-folder {
   display: flex;
   flex-wrap: wrap;
@@ -86,81 +62,5 @@ export default {
 .title {
   display: block;
   cursor: pointer;
-}
-
-.btn {
-  padding: 8px 16px;
-  border-radius: 3px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal {
-  background: #ffffff;
-  box-shadow: 2px 2px 20px 1px;
-  overflow-x: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-header,
-.modal-footer {
-  padding: 15px;
-  display: flex;
-}
-
-.modal-header {
-  border-bottom: 1px solid #eeeeee;
-  color: #4aae9b;
-  justify-content: space-between;
-}
-
-.modal-footer {
-  border-top: 1px solid #eeeeee;
-  justify-content: flex-end;
-}
-
-.modal-body {
-  position: relative;
-  padding: 20px 10px;
-}
-
-.btn-close {
-  border: none;
-  font-size: 20px;
-  padding: 20px;
-  cursor: pointer;
-  font-weight: bold;
-  color: #4aae9b;
-  background: transparent;
-}
-
-.btn {
-  color: white;
-  background: #4aae9b;
-  border: 1px solid #4aae9b;
-  border-radius: 2px;
-}
-
-.modal-fade-enter,
-.modal-fade-leave-active {
-  opacity: 0;
-}
-
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-  transition: opacity 0.5s ease;
 }
 </style>
