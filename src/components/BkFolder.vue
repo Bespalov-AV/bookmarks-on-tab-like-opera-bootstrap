@@ -15,7 +15,7 @@
 import BkModal from "./BkModal.vue";
 
 export default {
-  props: ["bkChildren", "title", "index", "isModal"],
+  props: ["bkChildren", "index", "title", "isModal"],
   components: { BkModal },
 
   data: () => ({

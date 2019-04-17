@@ -1,7 +1,11 @@
 <template>
   <div>
-    <div class="title" v-on:click="setOpenFolder" v-on:close="closeModal">{{ title }}</div>
-    <BkModal v-if="openFolder" v-on:close="closeModal" :bkChildren="bkFolder" :title="title"/>
+    <div
+      class="title"
+      v-on:click="setOpenFolder"
+      v-on:close="closeModal"
+      v-b-modal.modal-center
+    >{{ title }}</div>
     <div class="bk-contener">
       <div v-for="currentBk of bkFolder" :key="currentBk.id">
         <BkFolder
@@ -9,11 +13,19 @@
           :bkChildren="currentBk.children"
           :title="currentBk.title"
           :index="currentBk.index"
-          :isModal="openFolder"
+          :isModal="false"
         ></BkFolder>
 
-        <BkItem v-else :currentBk="currentBk" :isModal="openFolder"></BkItem>
+        <BkItem v-else :currentBk="currentBk" :isModal="false"></BkItem>
       </div>
+
+      <BkModal
+        v-if="openFolder"
+        :isModal="openFolder"
+        v-on:close="closeModal"
+        :bkChildren="bkFolder"
+        :title="title"
+      />
     </div>
   </div>
 </template>

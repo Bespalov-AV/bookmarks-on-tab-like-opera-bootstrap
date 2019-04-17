@@ -38,7 +38,7 @@ export default {
     setCloseFolder() {
       this.openFolder = !this.openFolder;
     },
-    close(event) {
+    close() {
       this.$emit("close");
     }
   }
@@ -58,5 +58,7 @@ export default {
 .title {
   display: block;
   cursor: pointer;
+}
+.modal-dialog {
 }
 </style>
