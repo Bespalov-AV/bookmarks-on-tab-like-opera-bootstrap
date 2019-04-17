@@ -7,12 +7,12 @@
         <div v-for="currentBk of bkChildren" :key="currentBk.id">
           <BkFolder
             v-if="currentBk.children"
-            :bkFolder="currentBk.children"
+            :bkChildren="currentBk.children"
             :title="currentBk.title "
-            :isOpenFolder="true"
+            :isModal="true"
           ></BkFolder>
 
-          <BkItem v-else :currentBk="currentBk" :isOpenFolder="true"></BkItem>
+          <BkItem v-else :currentBk="currentBk" :isModal="true"></BkItem>
         </div>
       </div>
     </b-modal>
@@ -28,22 +28,18 @@ export default {
   data: () => ({
     openFolder: true
   }),
+  created() {
+    //console.log(this.bkChildren);
+  },
   methods: {
     hide() {
       this.$emit("close");
-      console.log("hide");
-    },
-    log(param) {
-      console.log(param);
     },
     setCloseFolder() {
       this.openFolder = !this.openFolder;
     },
     close(event) {
       this.$emit("close");
-    },
-    update() {
-      console.log(this.bkChildren);
     }
   }
 };

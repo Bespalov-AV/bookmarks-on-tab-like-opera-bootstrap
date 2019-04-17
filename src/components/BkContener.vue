@@ -1,12 +1,7 @@
 <template>
   <div>
-    <div class="title" v-on:click="setOpenFolder($event)">{{ title }}</div>
-    <BkOpenFolder
-      v-if="openFolder"
-      v-on:click="setOpenFolder($event)"
-      :bkChildren="bkFolder"
-      :title="title"
-    />
+    <div class="title" v-on:click="setOpenFolder" v-on:close="closeModal">{{ title }}</div>
+    <BkModal v-if="openFolder" v-on:close="closeModal" :bkChildren="bkFolder" :title="title"/>
     <div class="bk-contener">
       <div v-for="currentBk of bkFolder" :key="currentBk.id">
         <BkFolder
@@ -14,9 +9,10 @@
           :bkChildren="currentBk.children"
           :title="currentBk.title"
           :index="currentBk.index"
+          :isModal="openFolder"
         ></BkFolder>
 
-        <BkItem v-else :currentBk="currentBk"></BkItem>
+        <BkItem v-else :currentBk="currentBk" :isModal="openFolder"></BkItem>
       </div>
     </div>
   </div>
@@ -25,21 +21,20 @@
 <script>
 import BkItem from "./BkItem.vue";
 import BkFolder from "./BkFolder.vue";
-import BkOpenFolder from "./BkOpenFolder.vue";
+import BkModal from "./BkModal.vue";
 
 export default {
   props: ["bkFolder", "title"],
-  components: { BkItem, BkFolder, BkOpenFolder },
+  components: { BkItem, BkFolder, BkModal },
   data: () => ({
     openFolder: false
   }),
   methods: {
-    log(param) {
-      console.log(param);
-    },
-    setOpenFolder(event) {
+    setOpenFolder() {
       this.openFolder = !this.openFolder;
-      console.log(this.openFolder);
+    },
+    closeModal() {
+      this.openFolder = false;
     }
   }
 };

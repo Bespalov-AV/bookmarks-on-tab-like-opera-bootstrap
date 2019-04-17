@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-if="index < 4 || isOpenFolder"
+      v-if="index < 4 || isModal"
       v-on:click="showModal"
       class="bk-folder"
       v-b-modal.modal-center
@@ -15,7 +15,7 @@
 import BkModal from "./BkModal.vue";
 
 export default {
-  props: ["bkChildren", "title", "index", "isOpenFolder"],
+  props: ["bkChildren", "title", "index", "isModal"],
   components: { BkModal },
 
   data: () => ({
@@ -27,7 +27,6 @@ export default {
     },
     closeModal() {
       this.openFolder = false;
-      console.log(this.openFolder);
     }
   }
 };

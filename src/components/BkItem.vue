@@ -1,19 +1,15 @@
 <template>
   <div
-    v-show="!hidden"
-    v-if="currentBk.index < 4 || isOpenFolder"
+    v-if="currentBk.index < 4 || isModal"
     class="bk-item"
     :style="getClassColor"
     v-on:click="actionClickBk(currentBk.url, $event)"
-  >
-    {{ getTitleShort(currentBk.url) }}
-    <!-- {{ currentBk.title }} -->
-  </div>
+  >{{ getTitleShort(currentBk.url) }}</div>
 </template>
 
 <script>
 export default {
-  props: ["currentBk", "hidden", "isOpenFolder"],
+  props: ["currentBk", "hidden", "isModal"],
 
   data: () => ({}),
   methods: {
