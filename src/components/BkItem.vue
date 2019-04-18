@@ -1,7 +1,7 @@
 <template>
   <div
-    v-if="currentBk.index < 4 || isModal"
     class="bk-item"
+    v-if="currentBk.index < 4 || isModal"
     :style="getClassColor"
     v-on:click="actionClickBk(currentBk.url, $event)"
   >{{ getTitleShort(currentBk.url) }}</div>
@@ -46,7 +46,7 @@ export default {
   align-items: center;
   width: 90px;
   height: var(--heght-bk);
-  /* border: 1px solid #216BA3; */
+  border: 1px solid #216ba3;
   border-radius: 5px;
   /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);     */
   margin: 2px;

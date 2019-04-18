@@ -1,24 +1,36 @@
 <template>
   <div v-if="bookmarks" class="flex-contener">
     <div class="contener">
-      <BkContener
-        v-for="bkFolder of bookmarks"
-        :key="bkFolder.id"
-        :bkFolder="bkFolder.children"
-        :title="bkFolder.title"
-      ></BkContener>
+      <div v-for="bkFolder of bookmarks" :key="bkFolder.id">
+        <BkContener
+          v-if="bkFolder.children"
+          :key="bkFolder.id"
+          :bkFolder="bkFolder.children"
+          :title="bkFolder.title"
+        ></BkContener>
+
+        <div
+          v-else
+          class="title"
+          v-on:click="setOpenFolder"
+          v-on:close="closeModal"
+          v-b-modal.modal-center
+        >{{ bkFolder.title }}</div>
+        <div class="bk-contener">
+          <BkItem :currentBk="bkFolder" :isModal="true"></BkItem>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import BkContener from "./components/BkContener.vue";
+import BkItem from "./components/BkItem.vue";
 
 export default {
   name: "App",
-  components: {
-    BkContener
-  },
+  components: { BkContener, BkItem },
   data() {
     return {
       bookmarks: null
