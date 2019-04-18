@@ -26,8 +26,8 @@ export default {
     },
     actionClickBk(url, event) {
       event.preventDefault();
-      //window.open(url, "_self");
-      window.location = url;
+      window.open(url, "_self");
+      //window.location = url;
     },
     cutTitle(title) {
       return title.substring(0, 40);
@@ -48,6 +48,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 90px;
   height: var(--heght-bk);
   /* border: 1px solid #216ba3; */
