@@ -41,11 +41,13 @@ export default {
 <style scoped>
 .bk-open-folder {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+
   /* height: var(--heght-bk); */
   flex-direction: row;
 
-  background: var(--bg-body);
+  /* background: var(--bg-body); */
   border-radius: 5px;
 }
 .title {
