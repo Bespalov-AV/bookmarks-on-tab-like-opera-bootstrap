@@ -14,9 +14,9 @@
           :title="currentBk.title"
           :index="currentBk.index"
           :isModal="false"
-        ></BkFolder>
+        />
 
-        <BkItem v-else :currentBk="currentBk" :isModal="false"></BkItem>
+        <BkItem v-else :currentBk="currentBk" :isModal="false"/>
       </div>
 
       <BkModal

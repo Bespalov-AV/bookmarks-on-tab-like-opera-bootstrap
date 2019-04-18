@@ -1,24 +1,26 @@
 <template>
   <div v-if="bookmarks" class="flex-contener">
-    <div class="contener">
+    <div class="main-contener">
       <div v-for="bkFolder of bookmarks" :key="bkFolder.id">
         <BkContener
           v-if="bkFolder.children"
           :key="bkFolder.id"
           :bkFolder="bkFolder.children"
           :title="bkFolder.title"
-        ></BkContener>
+        />
 
-        <div
-          v-else
-          class="title"
-          v-on:click="setOpenFolder"
-          v-on:close="closeModal"
-          v-b-modal.modal-center
-        >{{ bkFolder.title }}</div>
-        <div class="bk-contener">
-          <BkItem :currentBk="bkFolder" :isModal="true"></BkItem>
-        </div>
+        <template v-else>
+          <div
+            class="title"
+            v-on:click="setOpenFolder"
+            v-on:close="closeModal"
+            v-b-modal.modal-center
+          >{{ bkFolder.title }}</div>
+
+          <div class="bk-contener">
+            <BkItem :currentBk="bkFolder" :isModal="true"/>
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -55,8 +57,6 @@ export default {
     },
     getBookmarksFromChrome() {
       chrome.bookmarks.getTree(bookmarkTree => {
-        console.log("bookmarks tree -> " + bookmarkTree);
-        console.log(bookmarkTree);
         this.bookmarks = bookmarkTree[0].children[0].children;
         //bkContener.textContent= JSON.stringify(startTreeNodes[0].children[0].children[0])
       });
@@ -75,7 +75,7 @@ export default {
   justify-items: center;
   /* border: 1px solid red; */
 }
-.contener {
+.main-contener {
   display: flex;
   flex-direction: row;
   justify-content: start;

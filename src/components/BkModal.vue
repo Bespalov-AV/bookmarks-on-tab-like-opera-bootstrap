@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- Modal Component -->
-    <b-modal id="modal-center" centered v-on:hide="hide">
+    <b-modal id="modal-center" centered v-on:hide="close" :hide-footer="true">
       <div class="title">{{ title }}</div>
       <div class="bk-open-folder">
         <div v-for="currentBk of bkChildren" :key="currentBk.id">
@@ -10,9 +9,9 @@
             :bkChildren="currentBk.children"
             :title="currentBk.title "
             :isModal="true"
-          ></BkFolder>
+          />
 
-          <BkItem v-else :currentBk="currentBk" :isModal="true"></BkItem>
+          <BkItem v-else :currentBk="currentBk" :isModal="true"/>
         </div>
       </div>
     </b-modal>
@@ -28,13 +27,7 @@ export default {
   data: () => ({
     openFolder: true
   }),
-  created() {
-    //console.log(this.bkChildren);
-  },
   methods: {
-    hide() {
-      this.$emit("close");
-    },
     setCloseFolder() {
       this.openFolder = !this.openFolder;
     },

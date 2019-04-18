@@ -5,7 +5,7 @@
       v-on:click="showModal"
       class="bk-folder"
       v-b-modal.modal-center
-    >{{ title }}></div>
+    >{{ title }}</div>
 
     <BkModal v-if="openFolder" :bkChildren="bkChildren" v-on:close="closeModal"/>
   </div>

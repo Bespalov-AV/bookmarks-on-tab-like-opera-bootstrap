@@ -4,7 +4,7 @@
     v-if="currentBk.index < 4 || isModal"
     :style="getClassColor"
     v-on:click="actionClickBk(currentBk.url, $event)"
-  >{{ getTitleShort(currentBk.url) }}</div>
+  >{{ cutTitle(currentBk.title)}}</div>
 </template>
 
 <script>
@@ -26,7 +26,11 @@ export default {
     },
     actionClickBk(url, event) {
       event.preventDefault();
-      window.open(url).focus();
+      //window.open(url, "_self");
+      window.location = url;
+    },
+    cutTitle(title) {
+      return title.substring(0, 40);
     }
   },
   computed: {
@@ -46,7 +50,7 @@ export default {
   align-items: center;
   width: 90px;
   height: var(--heght-bk);
-  border: 1px solid #216ba3;
+  /* border: 1px solid #216ba3; */
   border-radius: 5px;
   /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);     */
   margin: 2px;

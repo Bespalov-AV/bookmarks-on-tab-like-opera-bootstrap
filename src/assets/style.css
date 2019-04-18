@@ -18,8 +18,8 @@
     --bg-body: cornflowerblue;
 }
 body {
-    font-weight: 400px;
+    /* font-weight: 400px;
     font-size: 14px;
     font-family: sans-serif, Arial;
-    background: var(--bg-body);
+    background: var(--bg-body); */
 }
