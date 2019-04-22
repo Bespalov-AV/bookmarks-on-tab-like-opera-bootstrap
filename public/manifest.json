@@ -1,7 +1,7 @@
 {
   "name": "bookmarks-on-tab-like-opera",
   "version": "1.0",
-  "description": "NMG Chrome-Extension Blank Template",
+  "description": "bookmarks-on-tab-like-opera",
   "permissions": [
     "declarativeContent",
     "storage",
