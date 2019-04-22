@@ -12,6 +12,12 @@ export default {
   props: ["currentBk", "hidden", "isModal"],
 
   data: () => ({}),
+  beforeUpdate() {
+    console.log(1);
+  },
+  beforeMount() {
+    console.log(2);
+  },
   methods: {
     getTitleShort(url) {
       //const text = url.match(/:\/\/.*\.\w{1,3}\//)[0].slice(3,-1)
